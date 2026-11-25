@@ -7,6 +7,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.signcolumn = "no"
 vim.o.undofile = true
+vim.o.clipboard = "unnamedplus"
 vim.o.cmdheight = 0
 
 vim.o.expandtab = true
@@ -45,6 +46,9 @@ end
 -- File explorer and fuzzy finding
 require("oil").setup({
   columns = {},
+  view_options = {
+    show_hidden = true,
+  },
 })
 require("mini.pick").setup()
 
@@ -52,12 +56,23 @@ require("mini.pick").setup()
 require("mini.bracketed").setup()
 
 -- Editing improvements
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
+require("mini.animate").setup()
 require("mini.ai").setup()
 require("mini.comment").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
 
 local map = vim.keymap.set
+
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 map("n", "<leader>ff", "<cmd>Pick files<cr>", { desc = "Find files" })
