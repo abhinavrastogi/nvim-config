@@ -26,10 +26,7 @@ vim.o.incsearch = true
 
 -- Install and load plugins using Neovim's built-in package manager.
 vim.pack.add({
-  {
-    src = "https://github.com/nvim-mini/mini.nvim",
-    version = "stable",
-  },
+  "https://github.com/nvim-mini/mini.nvim",
   "https://github.com/stevearc/oil.nvim",
 })
 
@@ -68,11 +65,13 @@ require("mini.comment").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
 require("mini.diff").setup()
+require('mini.tabline').setup()
+require('mini.git').setup()
 
 local map = vim.keymap.set
 
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+-- map("n", "<C-d>", "<C-d>zz")
+-- map("n", "<C-u>", "<C-u>zz")
 
 map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 map("n", "<leader>ff", "<cmd>Pick files<cr>", { desc = "Find files" })
