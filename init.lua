@@ -14,6 +14,9 @@ vim.o.smarttab = true
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.winborder = "rounded"
@@ -44,6 +47,9 @@ require("oil").setup({
   columns = {},
   view_options = {
     show_hidden = true,
+  },
+  keymaps = {
+    ["q"] = "actions.close",
   },
 })
 require("mini.pick").setup()
