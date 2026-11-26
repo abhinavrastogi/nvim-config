@@ -1,11 +1,10 @@
 -- Leaders must be defined before creating mappings.
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 
 -- Personal options. mini.basics will not override options set manually.
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.signcolumn = "no"
+vim.o.signcolumn = "yes"
 vim.o.undofile = true
 vim.o.clipboard = "unnamedplus"
 vim.o.cmdheight = 0
@@ -68,6 +67,7 @@ require("mini.ai").setup()
 require("mini.comment").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
+require("mini.diff").setup()
 
 local map = vim.keymap.set
 
@@ -80,3 +80,4 @@ map("n", "<leader>fg", "<cmd>Pick grep_live<cr>", { desc = "Search text" })
 map("n", "<leader>fb", "<cmd>Pick buffers<cr>", { desc = "Find buffers" })
 map("n", "<leader>fh", "<cmd>Pick help<cr>", { desc = "Find help" })
 map("n", "<leader>fr", "<cmd>Pick resume<cr>", { desc = "Resume picker" })
+map("n", "<leader>dt", "<cmd>lua MiniDiff.toggle_overlay()<cr>", { desc = "Toggle diff" })
