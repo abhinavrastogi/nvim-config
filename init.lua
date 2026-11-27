@@ -42,9 +42,8 @@ vim.pack.add({
 vim.cmd.colorscheme("miniwinter")
 
 -- UI
-require("mini.statusline").setup({
-  use_icons = false,
-})
+require("mini.icons").setup()
+require("mini.statusline").setup()
 
 MiniStatusline.section_location = function()
   return "%l/%L"
@@ -100,7 +99,8 @@ map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 map("n", "<leader>ff", "<cmd>Pick files<cr>", { desc = "Find files" })
 map("n", "<leader>fg", "<cmd>Pick grep_live<cr>", { desc = "Search text" })
 map("n", "<leader>fb", "<cmd>Pick buffers<cr>", { desc = "Find buffers" })
-map("n", "<leader>fh", "<cmd>Pick help<cr>", { desc = "Find help" })
+map("n", "<leader>fh", "<cmd>lua MiniExtra.pickers.git_hunks()<cr>", { desc = "Git hunks" })
+-- map("n", "<leader>fh", "<cmd>Pick help<cr>", { desc = "Find help" })
 map("n", "<leader>fr", "<cmd>Pick resume<cr>", { desc = "Resume picker" })
 map("n", "<leader>fo", "<cmd>lua MiniExtra.pickers.visit_paths()<cr>", { desc = "Find recent" })
-map("n", "<leader>dt", "<cmd>lua MiniDiff.toggle_overlay()<cr>", { desc = "Toggle diff" })
+map("n", "<leader>td", "<cmd>lua MiniDiff.toggle_overlay()<cr>", { desc = "Toggle diff" })
