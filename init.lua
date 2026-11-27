@@ -65,6 +65,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+require("mini.files").setup()
 require("mini.animate").setup()
 require("mini.ai").setup()
 require("mini.comment").setup()
@@ -81,6 +82,7 @@ local map = vim.keymap.set
 -- map("n", "<C-d>", "<C-d>zz")
 -- map("n", "<C-u>", "<C-u>zz")
 
+map("n", "<leader>e", "<cmd>lua MiniFiles.open()<cr>", { desc = "File explorer" })
 map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 map("n", "<leader>ff", "<cmd>Pick files<cr>", { desc = "Find files" })
 map("n", "<leader>fg", "<cmd>Pick grep_live<cr>", { desc = "Search text" })
