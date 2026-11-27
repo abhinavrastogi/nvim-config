@@ -27,6 +27,11 @@ vim.o.smartcase = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
 
+-- Folding
+vim.o.foldmethod = "indent"
+vim.o.foldlevelstart = 99
+vim.o.foldlevel = 0
+
 -- Install and load plugins using Neovim's built-in package manager.
 vim.pack.add({
   "https://github.com/nvim-mini/mini.nvim",
