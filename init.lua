@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 -- Personal options. mini.basics will not override options set manually.
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "no"
 vim.o.undofile = true
 vim.o.clipboard = "unnamedplus"
 vim.o.cmdheight = 0
@@ -31,7 +31,10 @@ vim.o.incsearch = true
 vim.pack.add({
   "https://github.com/nvim-mini/mini.nvim",
   "https://github.com/stevearc/oil.nvim",
+  "https://github.com/nvim-treesitter/nvim-treesitter",
 })
+
+vim.cmd.colorscheme("miniwinter")
 
 -- UI
 require("mini.statusline").setup({
@@ -63,6 +66,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.hl.on_yank()
   end,
+})
+
+require("nvim-treesitter.config").setup({
+  ensure_installed = { "typescript", "tsx", "javascript" },
+  highlight = { enable = true },
 })
 
 require("mini.files").setup()
